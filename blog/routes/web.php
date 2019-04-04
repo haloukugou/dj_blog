@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+$router->group(['namespace' => 'Index'], function ($router) {
+    $router->get('/', 'IndexController@index'); //基础页面
+});
+
+$router->group(['namespace' => 'Backend'], function ($router) {
+    //登录页面
+    $router->get('dj', 'LoginController@index');
+    //登录
+    $router->post('loginIn', 'LoginController@loginIn');
+
 });
