@@ -15,10 +15,24 @@ $router->group(['namespace' => 'Index'], function ($router) {
     $router->get('/', 'IndexController@index'); //基础页面
 });
 
-$router->group(['namespace' => 'Backend'], function ($router) {
+$router->group(['namespace'=>'Backend'], function($router){
     //登录页面
     $router->get('dj', 'LoginController@index');
-    //登录
-    $router->post('loginIn', 'LoginController@loginIn');
+});
 
+$router->group(['namespace'=>'Auth'], function($router){
+    //登录
+    $router->post('signIn', 'AuthController@signIn');
+    //退出登录
+    $router->post('signOut', 'AuthController@signOut');
+});
+
+$router->group(['middleware' => 'islogin'], function ($router) {
+
+    $router->group(['namespace' => 'Backend'], function ($router) {
+        //后台首页
+        $router->get('djIndex', 'IndexController@index');
+        //用户首页
+        $router->get('userIndex', 'UserController@userIndex');
+    });
 });

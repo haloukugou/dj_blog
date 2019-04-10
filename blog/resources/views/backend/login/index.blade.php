@@ -16,7 +16,7 @@
     <div class="lowin-wrapper">
         <div class="lowin-box lowin-login">
             <div class="lowin-box-inner">
-                <div action="{{url('loginIn')}}">
+                <div>
                     <p>hi! dota</p>
                     <div class="lowin-group">
                         <label>账号 </label>
@@ -33,7 +33,7 @@
                             <img src="{{captcha_src()}}"  style="cursor: pointer;width: 39%;vertical-align:middle;height: 45px;" onclick="this.src='{{captcha_src()}}'+Math.random()">
                         </div>
                     </div>
-                    <button class="lowin-btn login-btn" onclick="loginIn()">
+                    <button class="lowin-btn login-btn" onclick="loginIn()" id="signIn_btn">
                         冲啊!!!
                     </button>
                 </div>
@@ -48,12 +48,16 @@
 <script src="{{asset('js/jquery-2.1.1.min.js')}}"></script>
 <script src="{{asset('layui/layui.all.js')}}"></script>
 <script>
+    $(document).keyup(function(event){
+        if(event.keyCode ==13){
+            loginIn();
+        }
+    });
     function loginIn()
     {
         var account = $('#account').val(),
             password = $('#password').val(),
-            code = $('#code').val(),
-            obj = $(this);
+            code = $('#code').val();
         if(!account){
             layer.alert('账号都不输入???');return;
         }
@@ -69,16 +73,18 @@
             }
         });
         $.ajax({
-            url:"{{url('loginIn')}}",
+            url:"{{url('signIn')}}",
             data:{account:account,password:password,code:code},
             type:'post',
             beforeSend:function(){
-                $(obj).attr('disabled', 'disabled');
+                $('#signIn_btn').attr('disabled', 'disabled');
             },
             success:function(data){
                 if(data.code == 0){
                     layer.alert(data.msg);
                     $('img').click();
+                    $('#signIn_btn').removeAttr('disabled');
+                    $('#code').val('');
                 }
                 if(data.code == 1){
                     layer.msg(data.msg);
@@ -89,7 +95,7 @@
                 }
             },
             error:function(e){
-                $(obj).removeAttr('disabled');
+                $('#signIn_btn').removeAttr('disabled');
                 layer.alert(e.responseText);return;
             }
         })
