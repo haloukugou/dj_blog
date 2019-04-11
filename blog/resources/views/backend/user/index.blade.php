@@ -9,10 +9,11 @@
 {{--@endsection--}}
 @section('content')
     <style>
-        th{
+        th {
             text-align: center !important;
         }
-        tr td{
+
+        tr td {
             text-align: center !important;
         }
     </style>
@@ -43,7 +44,7 @@
                                     <tr>
                                         <th width="50">
                                             <label class="pos-rel">
-                                                <input type="checkbox" class="ace" />
+                                                <input type="checkbox" class="ace"/>
                                                 <span class="lbl"></span>
                                             </label>
                                         </th>
@@ -51,39 +52,40 @@
                                         <th width="100">密码盐</th>
                                         <th width="200">上次登录时间</th>
                                         <th width="150">登录ip</th>
-                                        <th width="150">操作</th>
+                                        {{--<th width="150">操作</th>--}}
                                     </tr>
                                     </thead>
 
                                     <tbody>
-                                    <tr>
-                                        <td class="center">
-                                            <label class="pos-rel">
-                                                <input type="checkbox" class="ace" />
-                                                <span class="lbl"></span>
-                                            </label>
-                                        </td>
-                                        <td>123</td>
-                                        <td>222asdf</td>
-                                        <td>$45</td>
-                                        <td>qerqwer</td>
-                                        <td>
-                                            <div class="hidden-sm hidden-xs btn-group">
-                                                <button class="btn btn-xs btn-success">
-                                                    <i class="ace-icon fa fa-check bigger-120"></i>
-                                                </button>
+                                    @foreach($info as $k=>$v)
+                                        <tr>
+                                            <td class="center">
+                                                <label class="pos-rel">
+                                                    <input type="checkbox" class="ace"/>
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+                                            <td>{{$v['account']}}</td>
+                                            <td>{{$v['salt']}}</td>
+                                            <td>{{$v['login_time']}}</td>
+                                            <td>{{$v['login_ip']}}</td>
+                                            {{--<td>--}}
+                                                {{--<div class="hidden-sm hidden-xs btn-group">--}}
+                                                    {{--<button class="btn btn-xs btn-success">--}}
+                                                        {{--<i class="ace-icon fa fa-check bigger-120"></i>--}}
+                                                    {{--</button>--}}
 
-                                                <button class="btn btn-xs btn-info">
-                                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                                </button>
+                                                    {{--<button class="btn btn-xs btn-info">--}}
+                                                        {{--<i class="ace-icon fa fa-pencil bigger-120"></i>--}}
+                                                    {{--</button>--}}
 
-                                                <button class="btn btn-xs btn-danger">
-                                                    <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-
+                                                    {{--<button class="btn btn-xs btn-danger">--}}
+                                                        {{--<i class="ace-icon fa fa-trash-o bigger-120"></i>--}}
+                                                    {{--</button>--}}
+                                                {{--</div>--}}
+                                            {{--</td>--}}
+                                        </tr>
+                                    @endforeach
 
                                     </tbody>
                                 </table>
