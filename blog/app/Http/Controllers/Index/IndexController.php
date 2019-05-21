@@ -21,6 +21,8 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
+        echo php_sapi_name();
+        die;
         return view('index.index');
     }
 
