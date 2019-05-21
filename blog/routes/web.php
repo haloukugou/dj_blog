@@ -34,5 +34,11 @@ $router->group(['middleware' => 'islogin'], function ($router) {
         $router->get('djIndex', 'IndexController@index');
         //用户首页
         $router->get('userIndex', 'UserController@userIndex');
+        //查看自己的信息
+        $router->get('setInfo', 'UserController@setInfo');
+        //编辑信息
+        $router->post('editInfo', 'UserController@edit');
+        //分类列表
+        $router->get('classifyList', 'ClassifyController@classifyList');
     });
 });

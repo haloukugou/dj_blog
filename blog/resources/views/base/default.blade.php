@@ -62,7 +62,7 @@
 
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                         <li>
-                            <a>
+                            <a onclick="openIframe('编辑个人资料', '{{url('setInfo')}}')">
                                 <i class="ace-icon fa fa-cog"></i>
                                 设置
                             </a>
@@ -107,7 +107,7 @@
                 <b class="arrow"></b>
             </li>
 
-            <li class="">
+            <li @if(isset($user)&&$user == 1) class="open" @endif>
                 <a href="#" class="dropdown-toggle">
                     <i class="menu-icon fa fa-desktop"></i>
                     <span class="menu-text">后台用户管理</span>
@@ -124,7 +124,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="">
+            <li @if(isset($classify) && $classify == 1) class="open" @endif>
                 <a href="#" class="dropdown-toggle">
                     <i class="menu-icon fa fa-list"></i>
                     <span class="menu-text"> 文章类型管理 </span>
@@ -136,7 +136,7 @@
 
                 <ul class="submenu">
                     <li class="">
-                        <a href="tables.html">
+                        <a href="{{url('classifyList')}}">
                             <i class="menu-icon fa fa-caret-right"></i>
                             类型列表
                         </a>
@@ -172,6 +172,7 @@
 <script src="{{asset('assets/js/ace-elements.min.js')}}"></script>
 <script src="{{asset('assets/js/ace.min.js')}}"></script>
 <script src="{{asset('layui/layui.all.js')}}"></script>
+<script src="{{asset('js/common.js')}}"></script>
 <script>
     function loginOut()
     {

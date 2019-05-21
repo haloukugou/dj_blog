@@ -7,18 +7,25 @@
  */
 namespace App\Http\Controllers;
 
-class BaseController
+class BaseController extends Controller
 {
+    /**
+     *分页条数
+     * @var int
+     */
+    protected $page_num = 20;
+
     /**
      * 返回失败
      * @param $msg
      * @return \Illuminate\Http\JsonResponse
      */
-    public function returnError($msg)
+    public function returnError($msg, $data = [])
     {
         $data = [
             'code'=>0,
-            'msg'=>$msg
+            'msg'=>$msg,
+            'data'=>$data
         ];
         return response()->json($data);
     }
@@ -27,11 +34,12 @@ class BaseController
      * @param $msg
      * @return \Illuminate\Http\JsonResponse
      */
-    public function returnSuccess($msg)
+    public function returnSuccess($msg, $data = [])
     {
         $data = [
             'code'=>1,
-            'msg'=>$msg
+            'msg'=>$msg,
+            'data'=>$data
         ];
         return response()->json($data);
     }
