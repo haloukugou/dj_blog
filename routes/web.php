@@ -40,5 +40,7 @@ $router->group(['middleware' => 'islogin'], function ($router) {
         $router->post('editInfo', 'UserController@edit');
         //分类列表
         $router->get('classifyList', 'ClassifyController@classifyList');
+        // 添加分类
+        $router->any('classifyAdd', 'ClassifyController@classifyAdd');
     });
 });

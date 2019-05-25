@@ -37,7 +37,7 @@
         </button>
 
         <div class="navbar-header pull-left">
-            <a href="index.html" class="navbar-brand">
+            <a href="{{url('djIndex')}}" class="navbar-brand">
                 <small>
                     <i class="fa fa-leaf"></i>
                     博客后台
@@ -174,6 +174,13 @@
 <script src="{{asset('layui/layui.all.js')}}"></script>
 <script src="{{asset('js/common.js')}}"></script>
 <script>
+    $(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    })
     function loginOut()
     {
         $.ajaxSetup({

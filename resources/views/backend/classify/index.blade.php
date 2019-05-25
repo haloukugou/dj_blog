@@ -1,12 +1,4 @@
 @extends('base.default')
-
-{{--@section('title', 'Page Title')--}}
-
-{{--@section('sidebar')--}}
-{{--@parent--}}
-
-{{--<p>这将追加到主布局的侧边栏。</p>--}}
-{{--@endsection--}}
 @section('content')
     <style>
         th {
@@ -26,15 +18,18 @@
                         <a href="{{url('djIndex')}}">首页</a>
                     </li>
                     <li>
-                        用户管理
+                        文章类型管理
                     </li>
                     <li>
-                        用户列表
+                        类型列表
                     </li>
                 </ul>
             </div>
 
             <div class="page-content">
+                <div class="row" style="padding: 0 12px;margin-bottom: 20px;">
+                    <button class="btn btn-sm btn-primary" onclick="add()">添加</button>
+                </div>
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="row">
@@ -43,10 +38,11 @@
                                     <thead>
                                     <tr>
                                         <th width="50">
-                                            <label class="pos-rel">
-                                                <input type="checkbox" class="ace"/>
-                                                <span class="lbl"></span>
-                                            </label>
+                                            {{--<label class="pos-rel">--}}
+                                                {{--<input type="checkbox" class="ace"/>--}}
+                                                {{--<span class="lbl"></span>--}}
+                                            {{--</label>--}}
+                                            编号
                                         </th>
                                         <th width="200">分类名称</th>
                                         <th width="100">添加时间</th>
@@ -59,14 +55,15 @@
                                     @foreach($info as $k=>$v)
                                         <tr>
                                             <td class="center">
-                                                <label class="pos-rel">
-                                                    <input type="checkbox" class="ace"/>
-                                                    <span class="lbl"></span>
-                                                </label>
+                                                {{--<label class="pos-rel">--}}
+                                                    {{--<input type="checkbox" class="ace"/>--}}
+                                                    {{--<span class="lbl"></span>--}}
+                                                {{--</label>--}}
+                                                {{$v['num']}}
                                             </td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
+                                            <td>{{$v['type_name']}}</td>
+                                            <td>{{$v['create_at']}}</td>
+                                            <td>{{$v['update_at']}}</td>
                                             <td>
                                             <div class="hidden-sm hidden-xs btn-group">
                                             <button class="btn btn-xs btn-success">
@@ -87,6 +84,7 @@
 
                                     </tbody>
                                 </table>
+                                {{$info->links()}}
                             </div><!-- /.span -->
                         </div>
                     </div>
@@ -94,4 +92,10 @@
             </div>
         </div>
     </div>
+    <script>
+        function add()
+        {
+            window.location.href = "{{url('classifyAdd')}}";
+        }
+    </script>
 @endsection

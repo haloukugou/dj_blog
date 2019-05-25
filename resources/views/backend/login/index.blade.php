@@ -55,6 +55,11 @@
     });
     function loginIn()
     {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         var account = $('#account').val(),
             password = $('#password').val(),
             code = $('#code').val();
@@ -67,11 +72,7 @@
         if(!code){
             layer.alert('验证码???');return;
         }
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+
         $.ajax({
             url:"{{url('signIn')}}",
             data:{account:account,password:password,code:code},
@@ -96,7 +97,8 @@
             },
             error:function(e){
                 $('#signIn_btn').removeAttr('disabled');
-                layer.alert(e.responseText);return;
+                $('img').click();
+                layer.alert('网络错误');return;
             }
         })
     }

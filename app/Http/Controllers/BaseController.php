@@ -13,7 +13,7 @@ class BaseController extends Controller
      *分页条数
      * @var int
      */
-    protected $page_num = 20;
+    protected $page_num = 2;
 
     /**
      * 返回失败
