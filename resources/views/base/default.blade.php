@@ -144,7 +144,23 @@
                     </li>
                 </ul>
             </li>
-
+            <li @if(isset($artic)&&$artic == 1) class="open" @endif>
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-desktop"></i>
+                    <span class="menu-text">文章管理</span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+                <b class="arrow"></b>
+                <ul class="submenu">
+                    <li class="">
+                        <a href="{{url('articList')}}">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            文章列表
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
         </ul>
 
         <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
@@ -173,6 +189,9 @@
 <script src="{{asset('assets/js/ace.min.js')}}"></script>
 <script src="{{asset('layui/layui.all.js')}}"></script>
 <script src="{{asset('js/common.js')}}"></script>
+{{--<script type="text/javascript" src="{{asset('markdown/examples/js/jquery.min.js')}}"></script>--}}
+<script type="text/javascript" src="{{asset('markdown/editormd.js')}}"></script>
+<script type="text/javascript" src="{{asset('markdown/editormd.amd.js')}}"></script>
 <script>
     $(function(){
         $.ajaxSetup({
@@ -205,5 +224,6 @@
         })
     }
 </script>
+@yield('jscontent')
 </body>
 </html>

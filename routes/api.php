@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+$router->group(['middleware' => 'islogin'], function ($router) {
+
+    $router->group(['namespace' => 'Backend'], function ($router) {
+        // 上传图片
+        $router->any('upload', 'UploadController@upload')->name('upload');
+    });
 });

@@ -74,7 +74,7 @@
                                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                                             </button>
 
-                                            <button class="btn btn-xs btn-danger">
+                                            <button class="btn btn-xs btn-danger" onclick="del(this)" cid="{{$v['id']}}">
                                             <i class="ace-icon fa fa-trash-o bigger-120"></i>
                                             </button>
                                             </div>
@@ -96,6 +96,30 @@
         function add()
         {
             window.location.href = "{{url('classifyAdd')}}";
+        }
+        function del(obj)
+        {
+            var id = $(obj).attr('cid');
+            if(!id){
+                layer.msg('缺少参数');return;
+            }
+            layer.confirm('确定删除?',function(){
+                $.ajax({
+                    url:"{{url('del_classify')}}",
+                    post:'post',
+                    data:{id:cid},
+                    beforeSend:function(){
+                      $(obj).attr('disabled','disabled');
+                    },
+                    success:function(data){
+
+                    },
+                    error:function(e){
+                        $(obj).removeAttr('disabled');
+                        layer.msg('网络错误');
+                    }
+                })
+            })
         }
     </script>
 @endsection

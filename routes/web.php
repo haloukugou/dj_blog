@@ -42,5 +42,12 @@ $router->group(['middleware' => 'islogin'], function ($router) {
         $router->get('classifyList', 'ClassifyController@classifyList');
         // 添加分类
         $router->any('classifyAdd', 'ClassifyController@classifyAdd');
+
+        // 文章列表
+        $router->get('articList', 'ArticController@articList')->name('articList');
+        // 添加文章
+        $router->any('articAdd', 'ArticController@articAdd')->name('articAdd');
+        // 上传图片
+        //$router->post('upload', 'UploadController@upload')->name('upload');
     });
 });
