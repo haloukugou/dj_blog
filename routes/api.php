@@ -13,10 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-$router->group(['middleware' => 'islogin'], function ($router) {
 
-    $router->group(['namespace' => 'Backend'], function ($router) {
-        // 上传图片
-        $router->any('upload', 'UploadController@upload')->name('upload');
-    });
+$router->group(['namespace' => 'Backend'], function ($router) {
+    // 上传图片
+    $router->any('upload', 'UploadController@upload')->name('upload');
 });

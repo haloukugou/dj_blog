@@ -12,7 +12,10 @@
 */
 
 $router->group(['namespace' => 'Index'], function ($router) {
-    $router->get('/', 'IndexController@index'); //基础页面
+    // 基础页面
+    $router->get('/', 'IndexController@index');
+    // 文章详情
+    $router->get('articDetail', 'IndexController@detail')->name('articDetail');
 });
 
 $router->group(['namespace'=>'Backend'], function($router){
@@ -47,7 +50,7 @@ $router->group(['middleware' => 'islogin'], function ($router) {
         $router->get('articList', 'ArticController@articList')->name('articList');
         // 添加文章
         $router->any('articAdd', 'ArticController@articAdd')->name('articAdd');
-        // 上传图片
-        //$router->post('upload', 'UploadController@upload')->name('upload');
+        // 编辑文章
+        $router->any('articEdit', 'ArticController@edit')->name('articEdit');
     });
 });

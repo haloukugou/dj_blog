@@ -54,7 +54,7 @@
         {{--</div>--}}
     </div>
 </div>
-<div class="tlinks">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
+<div class="tlinks">Collect from <a href="/" >网页模板</a></div>
 <div class="content">
     <div class="cont w1000">
         <div class="title">
@@ -65,114 +65,34 @@
         </span>
         </div>
         <div class="list-item">
-            <div>
-                <p>博客开发中.....</p>
+            {{--<div>--}}
+                {{--<p>博客开发中.....</p>--}}
+            {{--</div>--}}
+            @foreach($articList as $k=>$v)
+            <div class="item">
+                <div class="layui-fluid">
+                    <div class="layui-row">
+                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md5">
+                            <div class="img"><img src="{{asset('img/sy_img1.jpg')}}" alt=""></div>
+                        </div>
+                        <div class="layui-col-xs12 layui-col-sm8 layui-col-md7">
+                            <div class="item-cont">
+                                <h3>{{$v['title']}}<button class="layui-btn layui-btn-danger new-icon">new</button></h3>
+                                <h5>{{$v['type_name']}}</h5>
+                                <p>{{$v['description']}}</p>
+                                <a href="{{url('articDetail')}}?id={{$v['id']}}" class="go-icon"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            {{--<div class="item">--}}
-                {{--<div class="layui-fluid">--}}
-                    {{--<div class="layui-row">--}}
-                        {{--<div class="layui-col-xs12 layui-col-sm4 layui-col-md5">--}}
-                            {{--<div class="img"><img src="{{asset('img/sy_img1.jpg')}}" alt=""></div>--}}
-                        {{--</div>--}}
-                        {{--<div class="layui-col-xs12 layui-col-sm8 layui-col-md7">--}}
-                            {{--<div class="item-cont">--}}
-                                {{--<h3>空间立体效果图，完美呈现最终效果<button class="layui-btn layui-btn-danger new-icon">new</button></h3>--}}
-                                {{--<h5>设计文章</h5>--}}
-                                {{--<p>室内设计作为一门新兴的学科，尽管还只是近数十年的事，但是人们有意识地对自己生活、生产活动的室内进行安排布置，甚至美化装饰，赋予室内环境以所祈使的气氛，却早巳从人类文明伊始的时期就已存在</p>--}}
-                                {{--<a href="details.html" class="go-icon"></a>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="item">--}}
-                {{--<div class="layui-fluid">--}}
-                    {{--<div class="layui-row">--}}
-                        {{--<div class="layui-col-xs12 layui-col-sm4 layui-col-md5">--}}
-                            {{--<div class="img"><img src="{{asset('img/sy_img2.jpg')}}" alt=""></div>--}}
-                        {{--</div>--}}
-                        {{--<div class="layui-col-xs12 layui-col-sm8 layui-col-md7">--}}
-                            {{--<div class="item-cont">--}}
-                                {{--<h3>空间立体效果图，完美呈现最终效果<button class="layui-btn layui-btn-danger new-icon">new</button></h3>--}}
-                                {{--<h5>设计文章</h5>--}}
-                                {{--<p>室内设计作为一门新兴的学科，尽管还只是近数十年的事，但是人们有意识地对自己生活、生产活动的室内进行安排布置，甚至美化装饰，赋予室内环境以所祈使的气氛，却早巳从人类文明伊始的时期就已存在</p>--}}
-                                {{--<a href="details.html" class="go-icon"></a>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="item">--}}
-                {{--<div class="layui-fluid">--}}
-                    {{--<div class="layui-row">--}}
-                        {{--<div class="layui-col-xs12 layui-col-sm4 layui-col-md5">--}}
-                            {{--<div class="img"><img src="{{asset('img/sy_img3.jpg')}}" alt=""></div>--}}
-                        {{--</div>--}}
-                        {{--<div class="layui-col-xs12 layui-col-sm8 layui-col-md7">--}}
-                            {{--<div class="item-cont">--}}
-                                {{--<h3>空间立体效果图，完美呈现最终效果<button class="layui-btn layui-btn-danger new-icon">new</button></h3>--}}
-                                {{--<h5>设计文章</h5>--}}
-                                {{--<p>室内设计作为一门新兴的学科，尽管还只是近数十年的事，但是人们有意识地对自己生活、生产活动的室内进行安排布置，甚至美化装饰，赋予室内环境以所祈使的气氛，却早巳从人类文明伊始的时期就已存在</p>--}}
-                                {{--<a href="details.html" class="go-icon"></a>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="item">--}}
-                {{--<div class="layui-fluid">--}}
-                    {{--<div class="layui-row">--}}
-                        {{--<div class="layui-col-xs12 layui-col-sm4 layui-col-md5">--}}
-                            {{--<div class="img"><img src="{{asset('img/sy_img4.jpg')}}" alt=""></div>--}}
-                        {{--</div>--}}
-                        {{--<div class="layui-col-xs12 layui-col-sm8 layui-col-md7">--}}
-                            {{--<div class="item-cont">--}}
-                                {{--<h3>空间立体效果图，完美呈现最终效果<button class="layui-btn layui-btn-danger new-icon">new</button></h3>--}}
-                                {{--<h5>设计文章</h5>--}}
-                                {{--<p>室内设计作为一门新兴的学科，尽管还只是近数十年的事，但是人们有意识地对自己生活、生产活动的室内进行安排布置，甚至美化装饰，赋予室内环境以所祈使的气氛，却早巳从人类文明伊始的时期就已存在</p>--}}
-                                {{--<a href="details.html" class="go-icon"></a>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="item">--}}
-                {{--<div class="layui-fluid">--}}
-                    {{--<div class="layui-row">--}}
-                        {{--<div class="layui-col-xs12 layui-col-sm4 layui-col-md5">--}}
-                            {{--<div class="img"><img src="{{asset('img/sy_img5.jpg')}}" alt=""></div>--}}
-                        {{--</div>--}}
-                        {{--<div class="layui-col-xs12 layui-col-sm8 layui-col-md7">--}}
-                            {{--<div class="item-cont">--}}
-                                {{--<h3>空间立体效果图，完美呈现最终效果<button class="layui-btn layui-btn-danger new-icon">new</button></h3>--}}
-                                {{--<h5>设计文章</h5>--}}
-                                {{--<p>室内设计作为一门新兴的学科，尽管还只是近数十年的事，但是人们有意识地对自己生活、生产活动的室内进行安排布置，甚至美化装饰，赋予室内环境以所祈使的气氛，却早巳从人类文明伊始的时期就已存在</p>--}}
-                                {{--<a href="details.html" class="go-icon"></a>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
+            @endforeach
         </div>
         <div id="demo" style="text-align: center;"></div>
     </div>
 </div>
 
 <div class="footer-wrap" style="text-align: center;height: 50px;line-height: 50px">
-    {{--<div class="footer w1000">--}}
-        {{--<div class="qrcode">--}}
-            {{--<img src="{{asset('img/erweima.jpg')}}">--}}
-        {{--</div>--}}
-        {{--<div class="practice-mode">--}}
-            {{--<img src="{{asset('img/down_img.jpg')}}">--}}
-            {{--<div class="text">--}}
-                {{--<h4 class="title">联系方式</h4>--}}
-                {{--<p>微信<span class="WeChat">1234567890</span></p>--}}
-                {{--<p>邮箱<span class="email">491838375@qq.com</span></p>--}}
-                {{--<p><a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备18018526号-1</a></p>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
     <p><a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备18018526号-1</a></p>
 </div>
 <script type="text/javascript" src="{{asset('layui/layui.js')}}"></script>

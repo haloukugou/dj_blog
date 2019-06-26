@@ -40,7 +40,9 @@
                                         <th width="50">
                                             编号
                                         </th>
-                                        <th width="200">分类名称</th>
+                                        <th width="200">文章标题</th>
+                                        <th width="200">文章描述</th>
+                                        <th width="200">文章分类</th>
                                         <th width="100">添加时间</th>
                                         <th width="200">修改时间</th>
                                         <th width="150">操作</th>
@@ -53,6 +55,8 @@
                                             <td class="center">
                                                 {{$v['num']}}
                                             </td>
+                                            <td>{{$v['title']}}</td>
+                                            <td>{{$v['description']}}</td>
                                             <td>{{$v['type_name']}}</td>
                                             <td>{{$v['create_at']}}</td>
                                             <td>{{$v['update_at']}}</td>
@@ -62,7 +66,7 @@
                                             <i class="ace-icon fa fa-check bigger-120"></i>
                                             </button>
 
-                                            <button class="btn btn-xs btn-info">
+                                            <button class="btn btn-xs btn-info" onclick="edit(this)" cid="{{$v['id']}}">
                                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                                             </button>
 
@@ -85,6 +89,12 @@
         </div>
     </div>
     <script>
+        function edit(obj)
+        {
+            var id = $(obj).attr('cid');
+            window.location.href = "{{url('articEdit')}}?id="+id;
+        }
+
         function add()
         {
             window.location.href = "{{url('articAdd')}}";

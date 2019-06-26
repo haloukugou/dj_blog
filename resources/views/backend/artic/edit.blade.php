@@ -26,7 +26,7 @@
                         <a href="{{url('articList')}}">文章列表</a>
                     </li>
                     <li>
-                        添加文章
+                        编辑文章
                     </li>
                 </ul>
             </div>
@@ -38,7 +38,7 @@
                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 标题 </label>
 
                             <div class="col-sm-9">
-                                <input type="text" id="title" class="col-xs-10 col-sm-5">
+                                <input type="text" id="title" class="col-xs-10 col-sm-5" value="{{$articInfo->title}}">
                             </div>
                         </div>
                         <div class="form-group">
@@ -48,7 +48,7 @@
                                 <select id="classify" style="width: 40%">
                                     <option value="0">请选择...</option>
                                     @foreach($classifyList as $k=>$v)
-                                        <option value="{{$v['id']}}">{{$v['type_name']}}</option>
+                                        <option value="{{$v['id']}}" @if($articInfo->classify_id == $v['id']) selected @endif>{{$v['type_name']}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -57,12 +57,13 @@
                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 描述 </label>
 
                             <div class="col-sm-9">
-                                <textarea id="description" cols="30" rows="10" style="float: left"></textarea>
+                                <textarea id="description" cols="30" rows="10" style="float: left">{{$articInfo->description}}</textarea>
                             </div>
                         </div>
+                        <input type="hidden" id="aid" value="{{$articInfo->id}}">
                         <!--编辑器开始-->
                         <div id="test-editormd" name="post_content">
-                            <textarea name="post_content" id="content"></textarea>
+                            <textarea name="post_content" id="content">{{$articInfo->content}}</textarea>
                         </div>
                         <!--编辑器结束-->
                         <div class="form-group">
@@ -89,11 +90,12 @@
             var title = $('#title').val(),
                 classify = $('#classify option:selected').val(),
                 content = $('#content').val(),
-                description = $('#description').val();
+                description = $('#description').val(),
+                id = $('#aid').val();
             $.ajax({
-                url:"{{url('articAdd')}}",
+                url:"{{url('articEdit')}}",
                 type:'post',
-                data:{title:title,classify:classify,content:content,description:description},
+                data:{title:title,classify:classify,content:content,description:description,id:id},
                 beforeSend:function(){
                     $(obj).attr('disabled', 'disabled');
                 },
